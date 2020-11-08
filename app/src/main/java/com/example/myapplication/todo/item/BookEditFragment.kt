@@ -18,7 +18,7 @@ import com.example.myapplication.core.TAG
 import kotlinx.android.synthetic.main.fragment_item_edit.*
 import java.time.LocalDate
 
-class ItemEditFragment : Fragment() {
+class BookEditFragment : Fragment() {
     companion object {
         const val ITEM_ID = "_ID"
         const val HORSEPOWER="horsepower"
@@ -27,7 +27,7 @@ class ItemEditFragment : Fragment() {
         const val USER_ID="user_id"
     }
 
-    private lateinit var viewModel: ItemEditViewModel
+    private lateinit var viewModel: BookEditViewModel
     private var itemId: String? = null
     private var horsepower: String? = null
     private var releaseDate: String? = null
@@ -106,8 +106,8 @@ class ItemEditFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProvider(this).get(ItemEditViewModel::class.java)
-        viewModel.item.observe(viewLifecycleOwner) { item ->
+        viewModel = ViewModelProvider(this).get(BookEditViewModel::class.java)
+        viewModel.book.observe(viewLifecycleOwner) { item ->
             Log.v(TAG, "update items")
             car_name.setText(item.title)
         }

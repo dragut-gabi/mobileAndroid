@@ -15,9 +15,9 @@ import com.example.myapplication.auth.data.AuthRepository
 import com.example.myapplication.core.TAG
 import kotlinx.android.synthetic.main.fragment_item_list.*
 
-class ItemListFragment : Fragment() {
-    private lateinit var itemListAdapter: ItemListAdapter
-    private lateinit var itemsModel: ItemListViewModel
+class BookListFragment : Fragment() {
+    private lateinit var bookListAdapter: BookListAdapter
+    private lateinit var itemsModel: BookListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,12 +46,12 @@ class ItemListFragment : Fragment() {
     }
 
     private fun setupItemList() {
-        itemListAdapter = ItemListAdapter(this)
-        item_list.adapter = itemListAdapter
-        itemsModel = ViewModelProvider(this).get(ItemListViewModel::class.java)
+        bookListAdapter = BookListAdapter(this)
+        item_list.adapter = bookListAdapter
+        itemsModel = ViewModelProvider(this).get(BookListViewModel::class.java)
         itemsModel.items.observe(viewLifecycleOwner) { items ->
             Log.v(TAG, "update items")
-            itemListAdapter.items = items
+            bookListAdapter.items = items
         }
         itemsModel.loading.observe(viewLifecycleOwner) { loading ->
             Log.i(TAG, "update loading")

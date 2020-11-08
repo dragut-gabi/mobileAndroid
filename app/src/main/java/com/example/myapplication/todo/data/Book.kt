@@ -1,6 +1,6 @@
 package com.example.myapplication.todo.data
 
-data class Item(
+data class Book(
     var _id: String,
     val userId: String,
     var title: String,

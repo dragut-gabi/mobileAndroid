@@ -6,18 +6,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.core.TAG
-import com.example.myapplication.todo.data.Item
-import com.example.myapplication.todo.data.ItemRepository
+import com.example.myapplication.todo.data.Book
+import com.example.myapplication.todo.data.BookRepository
 import com.example.myapplication.core.Result
 import kotlinx.coroutines.launch
 
-class ItemEditViewModel : ViewModel() {
-    private val mutableItem = MutableLiveData<Item>().apply { value = Item("", "", pages = 0,sold = false, releaseDate = "",title = "") }
+class BookEditViewModel : ViewModel() {
+    private val mutableItem = MutableLiveData<Book>().apply { value = Book("", "", pages = 0,sold = false, releaseDate = "",title = "") }
     private val mutableFetching = MutableLiveData<Boolean>().apply { value = false }
     private val mutableCompleted = MutableLiveData<Boolean>().apply { value = false }
     private val mutableException = MutableLiveData<Exception>().apply { value = null }
 
-    val item: LiveData<Item> = mutableItem
+    val book: LiveData<Book> = mutableItem
     val fetching: LiveData<Boolean> = mutableFetching
     val fetchingError: LiveData<Exception> = mutableException
     val completed: LiveData<Boolean> = mutableCompleted
@@ -27,7 +27,7 @@ class ItemEditViewModel : ViewModel() {
             Log.v(TAG, "loadItem...");
             mutableFetching.value = true
             mutableException.value = null
-            when (val result = ItemRepository.load(itemId)) {
+            when (val result = BookRepository.load(itemId)) {
                 is Result.Success -> {
                     Log.d(TAG, "loadItem succeeded");
                     mutableItem.value = result.data
@@ -51,9 +51,9 @@ class ItemEditViewModel : ViewModel() {
             item.releaseDate=releaseDate
             mutableFetching.value = true
             mutableException.value = null
-            val result: Result<Item>
+            val result: Result<Book>
             if (item._id.isNotEmpty()) {
-                result = ItemRepository.update(item)
+                result = BookRepository.update(item)
             } else {
                 val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
                 val randomString = (1..16)
@@ -61,7 +61,7 @@ class ItemEditViewModel : ViewModel() {
                     .map(charPool::get)
                     .joinToString("")
                 item._id = randomString
-                result = ItemRepository.save(item)
+                result = BookRepository.save(item)
             }
             when (result) {
                 is Result.Success -> {
@@ -84,7 +84,7 @@ class ItemEditViewModel : ViewModel() {
             mutableException.value = null
             val item = mutableItem.value ?: return@launch
             val result: Result<Boolean>
-            result = ItemRepository.delete(item._id)
+            result = BookRepository.delete(item._id)
             when (result) {
                 is Result.Success -> {
                     Log.d(TAG, "delete succeeded");

@@ -6,17 +6,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.core.TAG
-import com.example.myapplication.todo.data.Item
-import com.example.myapplication.todo.data.ItemRepository
+import com.example.myapplication.todo.data.Book
+import com.example.myapplication.todo.data.BookRepository
 import com.example.myapplication.core.Result
 import kotlinx.coroutines.launch
 
-class ItemListViewModel : ViewModel() {
-    private val mutableItems = MutableLiveData<List<Item>>().apply { value = emptyList() }
+class BookListViewModel : ViewModel() {
+    private val mutableItems = MutableLiveData<List<Book>>().apply { value = emptyList() }
     private val mutableLoading = MutableLiveData<Boolean>().apply { value = false }
     private val mutableException = MutableLiveData<Exception>().apply { value = null }
 
-    val items: LiveData<List<Item>> = mutableItems
+    val items: LiveData<List<Book>> = mutableItems
     val loading: LiveData<Boolean> = mutableLoading
     val loadingError: LiveData<Exception> = mutableException
 
@@ -25,7 +25,7 @@ class ItemListViewModel : ViewModel() {
             Log.v(TAG, "loadItems...");
             mutableLoading.value = true
             mutableException.value = null
-            when (val result = ItemRepository.loadAll()) {
+            when (val result = BookRepository.loadAll()) {
                 is Result.Success -> {
                     Log.d(TAG, "loadItems succeeded");
                     mutableItems.value = result.data
