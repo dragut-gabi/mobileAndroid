@@ -43,6 +43,11 @@ class BookListFragment : Fragment() {
             Log.v(TAG, "add new item")
             findNavController().navigate(R.id.fragment_item_edit)
         }
+        logout.setOnClickListener{
+            Log.v(TAG, "LOGOUT")
+            AuthRepository.logout()
+            findNavController().navigate(R.id.fragment_login)
+        }
     }
 
     private fun setupItemList() {
