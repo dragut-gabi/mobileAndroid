@@ -1,4 +1,4 @@
-package com.example.myapplication.todo.items
+package com.example.myapplication.book.bookList
 
 import android.os.Bundle
 import android.util.Log
@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.core.TAG
-import com.example.myapplication.todo.data.Book
-import com.example.myapplication.todo.item.BookEditFragment
+import com.example.myapplication.book.data.Book
+import com.example.myapplication.book.bookItem.BookEditFragment
 import kotlinx.android.synthetic.main.view_item.view.*
 
 class BookListAdapter(

@@ -1,4 +1,4 @@
-package com.example.myapplication.todo.data
+package com.example.myapplication.book.data
 
 data class Book(
     var _id: String,

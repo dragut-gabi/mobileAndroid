@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object Api {
-    private const val URL = "http://192.168.192.1:3000/"
+    private const val URL = "http://192.168.43.8:3000/"
 
     val tokenInterceptor = TokenInterceptor()
 

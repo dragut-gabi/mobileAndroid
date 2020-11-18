@@ -1,7 +1,7 @@
-package com.example.myapplication.todo.data
+package com.example.myapplication.book.data
 
 import com.example.myapplication.core.Result
-import com.example.myapplication.todo.data.remote.BookApi
+import com.example.myapplication.book.data.remote.BookApi
 
 object BookRepository {
     private var cachedBooks: MutableList<Book>? = null;

@@ -1,7 +1,7 @@
-package com.example.myapplication.todo.data.remote
+package com.example.myapplication.book.data.remote
 
 import com.example.myapplication.core.Api
-import com.example.myapplication.todo.data.Book
+import com.example.myapplication.book.data.Book
 import retrofit2.Response
 import retrofit2.http.*
 

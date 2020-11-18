@@ -1,4 +1,4 @@
-package com.example.myapplication.todo.item
+package com.example.myapplication.book.bookItem
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.core.TAG
-import com.example.myapplication.todo.data.Book
-import com.example.myapplication.todo.data.BookRepository
+import com.example.myapplication.book.data.Book
+import com.example.myapplication.book.data.BookRepository
 import com.example.myapplication.core.Result
 import kotlinx.coroutines.launch
 
