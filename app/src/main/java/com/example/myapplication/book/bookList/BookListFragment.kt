@@ -12,6 +12,7 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
 import com.example.myapplication.auth.data.AuthRepository
+import com.example.myapplication.core.Constants
 import com.example.myapplication.core.TAG
 import kotlinx.android.synthetic.main.fragment_item_list.*
 
@@ -34,7 +35,7 @@ class BookListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Log.v(TAG, "onActivityCreated")
-        if (!AuthRepository.isLoggedIn) {
+        if (Constants.instance()?.fetchValueString("token")==null) {
             findNavController().navigate(R.id.fragment_login)
             return;
         }
